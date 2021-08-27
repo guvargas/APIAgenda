@@ -57,6 +57,8 @@ routes.get('/compromissos/', (req, res) => {
     )
 });
 
+
+
 // 4 Consultar compromissos filtrando por um intervalo de data e usuario
 routes.get('/compromissos/filtrodata/:inicio/:fim/:idusuario', (req, res) => {
     db.find({idusuario:req.params.idusuario}).sort({data:1}).exec((err, compromisso) => {

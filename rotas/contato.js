@@ -19,6 +19,19 @@ routes.post('/contatos', (req, res) => {
     })
 })
 
+// 6 trazer contato por id contato
+routes.get('/contatos/contato/:id', (req, res) => {
+    db.find({ _id: req.params.id }).sort({}).exec((err, contato) => {
+        if (err) {
+            res.status(400).json({ error: err })
+        } else {
+            res.json({ contato });
+        }
+    }
+    )
+})
+
+
 // 7 atualizar contato
 routes.put('/contatos/:id', (req, res) => {
     res.setHeader('Content-Type', 'application/json')
