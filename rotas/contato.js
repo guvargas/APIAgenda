@@ -69,6 +69,22 @@ routes.get('/contatos/:id', (req, res) => {
     )
 })
 
+// Contatos de um id (pessoa)
+routes.get('/contatos/:id/:idcontato', (req, res) => {
+    db.find({ 
+        idusuario: req.params.id,
+        _id: req.params.idcontato
+     }).sort({}).exec((err, contato) => {
+        if (err) {
+            res.status(400).json({ error: err })
+        } else {
+            res.json(contato);
+        }
+    }
+    )
+})
+
+
 // Contatos de um id (pessoa) por nome
 routes.get('/contatos/:id/:nome', (req, res) => {
     db.find({ idusuario: req.params.id,
